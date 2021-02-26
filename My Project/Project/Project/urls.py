@@ -21,5 +21,5 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     url(r'^$', include("Homepage.urls")),
     url(r'^Login', include("Login.urls")),
-
+    url(r'^addbankaccount/',include("addbankaccount.urls"))
 ]
