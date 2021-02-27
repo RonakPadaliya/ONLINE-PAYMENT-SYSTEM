@@ -48,14 +48,20 @@ def welcome(request):
         username = request.POST['username']
         password = request.POST['password']
         # check user is register or not
-        u = Users_info.check(username=username, password=password)
-        # user is  register then value of user is not None
-        if u is None:
-            # login access to user
-            messages.info(request, "Invalid username or password")
-            return redirect('/Login')
+        # u = Users_info.check(username=username, password=password)
+        # # user is  register then value of user is not None
+        # if u is None:
+        #     # login access to user
+        #     messages.info(request, "Invalid username or password")
+        #     return redirect('/Login')
+        # else:
+        #     return render(request, 'Login/welcome.html')
+        if Users_info.objects.filter(username=username).exists() and Users_info.objects.filter(password1=password).exists():
+            request.session['username'] = username
+            return render(request, 'Login/welcome.html', {"username": username})
         else:
-            return render(request, 'Login/welcome.html')
+            messages.info(request,"Invalid username or password")
+            return render(request,'Login/login.html')
     else:
         return render(request, 'Login/login.html')
 
