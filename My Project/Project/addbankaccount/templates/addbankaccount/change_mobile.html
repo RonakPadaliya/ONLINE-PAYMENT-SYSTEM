@@ -1,7 +1,25 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <h1>Change</h1>
-    </body>
-</html>
+{% extends 'addbankaccount/base.html' %}
+{% block content %}
+<h1 class="display-4">Change Mobile Number</h1>
+                <p class="lead font-italic" >You are changing your mobile number...</p>
+            <hr class="my-4">
+<center>
+    <div class="jumbotron" >
+        <h3 class="display-4">Change Mobile Number</h3>
+    </div>
+    {% for m in messages%}
+        <h4>{{m}}</h4>
+    {% endfor %}
+    <form method = "post" action="">
+        {% csrf_token %}
+        <label>Enter OLD Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" name = "oldmobile" value = "" id="mobile">
+        <br><br>
+        <label>Enter New Mobile NO  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" name="newmobile" value="" id="acno">
+        <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-success">change</button>
+        <br>
+    </form>
+</center>
+{% endblock %}

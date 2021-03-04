@@ -11,5 +11,6 @@ class Users_info(models.Model):
     mobile=models.CharField(max_length=10)
     username=models.CharField(max_length=50,primary_key=True)
     password=models.CharField(max_length=500)
+    status=models.IntegerField(default=0)
 
 
