@@ -12,5 +12,7 @@ class Users_info(models.Model):
     username=models.CharField(max_length=50,primary_key=True)
     password=models.CharField(max_length=500)
     status=models.IntegerField(default=0)
+    upi_staus=models.IntegerField(default=0)
+    upi=models.IntegerField(default=0)
 
 

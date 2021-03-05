@@ -1,12 +1,11 @@
 {% extends 'addbankaccount/base.html' %}
 {% block content %}
-{% if request.session.status == 0 %}
-<h1 class="display-4">Add bank account</h1>
-                <p class="lead font-italic" >You have to do add your bank account to do your payment..</p>
+<h1 class="display-4">Change bank account</h1>
+                <p class="lead font-italic" >You are changing your bank account......</p>
             <hr class="my-4">
     <center>
         <div class="jumbotron" >
-            <h3 class="display-4">Add Bank Account</h3>
+            <h3 class="display-4">Change Bank Account</h3>
         </div>
         {% for m in messages%}
             <h4>{{m}}</h4>
@@ -21,17 +20,6 @@
             <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="submit" class="btn btn-success">Add</button>
             <br>
-           <h3> For change<a href="{% url 'addbankaccount:change_mobile'%}"> Mobile no</a></h3>
         </form>
     </center>
-{% else %}
-        <h1 class="display-4" style="color: red;">Alert:</style></h1>
-        <hr class="my-4">
-        <center>
-            <div class="jumbotron" >
-                <h3 class="display-4"></h3>
-            </div>
-            <h2>You have already added bank account.</h2><br>
-            </center>
-{% endif %}
 {% endblock %}

@@ -5,7 +5,7 @@ from .models import Users_info
 
 
 def login(request):
-    if request.session['username'] is None:
+    if request.session.get('username') is None:
         return render(request, 'Login/login.html')
     else:
         return redirect('Login/welcome/')
@@ -73,4 +73,5 @@ def logout(request):
         del request.session['status']
         messages.info(request,"you are successfully logout")
         return render(request,'Login/login.html')
-
+    else:
+        return render(request,'Login/login.html')
