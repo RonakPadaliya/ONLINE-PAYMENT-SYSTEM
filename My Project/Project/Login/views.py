@@ -71,6 +71,7 @@ def logout(request):
     if 'username' in request.session:
         del request.session['username']
         del request.session['status']
+        del request.session['upi']
         messages.info(request,"you are successfully logout")
         return render(request,'Login/login.html')
     else:

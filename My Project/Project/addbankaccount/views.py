@@ -15,14 +15,16 @@ def bank_form(request):
                 if mobile == Bank.objects.filter(acno=acno).first().mobile:
                     b=Bank.objects.filter(acno=acno).first()
                     b.status=1
-                    b.save()
+                    
                     u=Users_info.objects.filter(username=check).first()
                     u.status=1
+                    b.username = Users_info.objects.get(username =check)
                     u.save()
+                    b.save()
                     request.session['status']=1
                     request.session['add_bank_account']=True
                     messages.info(request,"Sucessfully connected")
-                    return redirect('http://127.0.0.1:8000/Login/welcome')
+                    return redirect('http://127.0.0.1:8000/upi')
                 else:
                     messages.info(request,"Your mobile number is not linked with Bank")
                     return render(request,"addbankaccount/bank_details.html")
