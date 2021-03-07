@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'Homepage',
     'addbankaccount',
     'upi',
-    'change'
+    'change',
+    'make_payment'
 ]
 
 MIDDLEWARE = [

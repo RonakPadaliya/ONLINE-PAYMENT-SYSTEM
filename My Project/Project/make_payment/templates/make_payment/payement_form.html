@@ -1,0 +1,26 @@
+{% extends 'make_payment/base.html'%}
+{% block content %}
+<h1 class="display-4">Add bank account</h1>
+                <p class="lead font-italic" >You have to do add your bank account to do your payment..</p>
+            <hr class="my-4">
+    <center>
+        <div class="jumbotron" >
+            <h3 class="display-4">Add Bank Account</h3>
+        </div>
+        {% for m in messages%}
+            <h4>{{m}}</h4>
+        {% endfor %}
+        <form method = "post" action="">
+            {% csrf_token %}
+            <label>Your Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name = "mobile" value = "" id="mobile">
+            <br><br>
+            <label> Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="acno" value="" id="acno">
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-success">Add</button>
+            <br>
+           <h3> For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
+        </form>
+    </center>
+{% endblock %}
