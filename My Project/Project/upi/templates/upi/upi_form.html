@@ -1,6 +1,15 @@
 {% extends 'upi/base.html' %}
 {% block content %}
-{% if request.session.upi == 0 %}
+{%if request.session.user_status == 0 %}
+<h1 class="display-4" style="color: red;">Alert:</style></h1>
+<hr class="my-4">
+<center>
+    <div class="jumbotron" >
+        <h3 class="display-4"></h3>
+    </div>
+    <h2>You have not added bank account So you cannot able to create UPI PIN.</h2><br>
+    </center>
+{% elif request.session.user_upi_staus == 0 %}
 <h1 class="display-4">UPI Form</h1>
                 <p class="lead font-italic" >You have to craete UPI for secure Payment......</p>
             <hr class="my-4">

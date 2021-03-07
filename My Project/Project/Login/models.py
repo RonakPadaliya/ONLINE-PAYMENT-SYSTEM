@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 
@@ -14,5 +13,5 @@ class Users_info(models.Model):
     status=models.IntegerField(default=0)
     upi_staus=models.IntegerField(default=0)
     upi=models.IntegerField(default=0)
-
-
+    acno=models.CharField(max_length=14,default=0)
+    balance=models.IntegerField(default=0)

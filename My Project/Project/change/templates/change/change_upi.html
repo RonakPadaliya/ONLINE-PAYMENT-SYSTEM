@@ -1,0 +1,38 @@
+{% extends 'change/base.html' %}
+    {% block content %}
+    <div class="container">
+        <div class="col-md-10.offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Change UPI PIN</h1>
+                <p class="lead font-italic" >You are changing your UPI PIN......</p>
+            <hr class="my-4">
+    <center>
+        <div class="jumbotron" >
+            <h3 class="display-4">Change UPI PIN</h3>
+        </div>
+        {% for m in messages%}
+            <h4>{{m}}</h4>
+        {% endfor %}
+        <form method = "post" action="">
+            {% csrf_token %}
+            <label>Enter Username : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" name = "username" value = "" id="username">
+            <br><br>
+            <label>Enter Password : :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="password" name="password" value="" id="password">
+            <br><br>
+            <label>Enter OLD UPI PIN :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="oldpin" value="" id="oldpin">
+            <br><br>
+            <label>Enter NEW UPI PIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="newpin" value="" id="newpin">
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-success">Change</button>
+            <br>
+        </form>
+    </center>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

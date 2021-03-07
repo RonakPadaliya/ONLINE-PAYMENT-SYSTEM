@@ -10,14 +10,15 @@ def upi_form(request):
         username = request.POST['username']
         password = request.POST['password']
         upi=request.POST['upi']
-        user_check = request.session['username']
+        user_check = request.session['user_username']
         acno=int(acno)
         if username == user_check:
             if password == Users_info.objects.filter(username=user_check).first().password:
                 if mobile == Bank.objects.filter(username=user_check).first().mobile:
                     if acno == Bank.objects.filter(username=user_check).first().acno:
                         u=Users_info.objects.filter(username=user_check).first()
-                        request.session['upi']=upi
+                        request.session['user_upi']=upi
+                        request.session['user_upi_staus']=1
                         u.upi_staus = 1
                         u.upi=upi
                         u.save()

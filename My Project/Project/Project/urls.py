@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^Login', include("Login.urls")),
     url(r'^addbankaccount/',include("addbankaccount.urls")),
     url(r'^upi', include("upi.urls")),
+    url(r'^change',include("change.urls"))
+
 ]

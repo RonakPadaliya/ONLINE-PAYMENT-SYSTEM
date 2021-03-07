@@ -8,8 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-	{% load static %}
+<body>{% load static %}
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -19,19 +18,25 @@
 	      <li><a href="{% url 'addbankaccount:bank_form'%}">Add Bank Account</a></li>
 	    </ul>
 		<ul class="nav navbar-nav">
-			<li><a href="{% url 'addbankaccount:change_bankaccount'%}">Change Bank Account</a></li>
+			<li><a href="{% url 'change:change_bank_account'%}">Change Bank Account</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav">
 			<li><a href="{% url 'upi:upi_form'%}">UPI</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav">
+			<li><a href="{% url 'change:change_upi'%}">Change UPI</a></li>
 		  </ul>
 		<ul class="nav navbar-nav">
 			<li><a href="{% url 'Login:logout' %}">Logout</a></li>
 		  </ul>
 	  </div>
 	</nav>
+	{% block content %}
+	{% load static %}
 	<section align = "center">
-		<h1>Welcome,Welcome,{{request.session.username}},{{request.session.status}}</h1>
+		<h1>Welcome,Welcome,{{request.session.user_username}}<br>status :{{request.session.user_status}}<br>upi_staus:{{request.session.user_upi_staus}}</h1>
 		<img src="{% static '2.jpg' %}" width="100%" height="100%">
 	</section>
+	{% endblock %}
 </body>
 </html>

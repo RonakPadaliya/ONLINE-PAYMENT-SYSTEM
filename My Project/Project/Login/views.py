@@ -48,16 +48,25 @@ def registration(request):
     else:
         return render(request, 'Login/registration.html')
 def welcome(request):
-    if request.session.get('username') is None:
+    print("hello")
+    if request.session.get('user_username') is not None:
         if request.method == "POST":
             username = request.POST['username']
             password = request.POST['password']
             if Users_info.objects.filter(username=username).exists() and Users_info.objects.filter(username=username).first().password==password:
-                request.session['username'] = username
                 u=Users_info.objects.filter(username=username).first()
+                request.session['user_username'] = u.username
+                request.session['user_password'] = u.password
+                request.session['user_mobile'] = u.mobile
+                request.session['user_status'] = u.status
+                request.session['user_upi'] = u.upi
+                request.session['user_upi_staus'] = u.upi_staus
+                request.session['user_email'] = u.email
+                request.session['user_acno']=u.acno
+                request.session['user_balance']=u.balance
                 p=u.status
-                request.session['status'] = p
                 print(p)
+                print(u.username)
                 return render(request, 'Login/welcome.html', {"username": username,'status':p})
             else:
                 messages.info(request,"Invalid username or password")
@@ -69,9 +78,13 @@ def welcome(request):
         
 def logout(request):
     if 'username' in request.session:
-        del request.session['username']
-        del request.session['status']
-        del request.session['upi']
+        del request.session['user_username']
+        del request.session['user_password']
+        del request.session['user_mobile']
+        del request.session['user_status']
+        del request.session['user_upi']
+        del request.session['user_upi_staus']
+        del request.session['user_email']
         messages.info(request,"you are successfully logout")
         return render(request,'Login/login.html')
     else:
