@@ -1,0 +1,24 @@
+{% extends 'make_payment/base.html'%}
+{% block content %}
+<h1 class="display-4">Make Payment</h1>
+                <p class="lead font-italic" >You have to do add your bank account to do your payment..</p>
+            <hr class="my-4">
+    <center>
+        <div class="jumbotron" >
+            <h3 class="display-4">Select Payment Method</h3>
+        </div>
+        {% for m in messages%}
+            <h4>{{m}}</h4>
+        {% endfor %}
+        <form method = "post" action="">
+            {% csrf_token %}
+            <lable>Select Payment Method :</lable>
+            <select name="paymentmethod">
+                <option value='usingmobilenumber'>Using Mobile Number</option>
+                <option value='usingaccountnumber'>Using Account Number</option>
+            </select>
+
+            <button type="submit" class="btn btn-success">Make Payment</button>
+        </form>
+    </center>
+{%endblock}
