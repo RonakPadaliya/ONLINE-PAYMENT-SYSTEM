@@ -25,19 +25,19 @@ def bank_form(request):
                         b.save()
                         request.session['user_status']=1
                         request.session['bank_acno']=acno
-                        messages.info(request,"Sucessfully connected")
+                        messages.success(request,"Sucessfully connected")
                         return redirect('http://127.0.0.1:8000/upi')
                     else:
-                        messages.info(request,"Your mobile no is linked with mutiple account")
+                        messages.error(request,"Your mobile no is linked with mutiple account")
                         return render(request,'addbankaccount/bank_details.html')
                 else:
-                    messages.info(request,"Your mobile number is not linked with Bank")
+                    messages.error(request,"Your mobile number is not linked with Bank")
                     return render(request,"addbankaccount/bank_details.html")
             else:
-                messages.info(request,"Invalid account number")
+                messages.error(request,"Invalid account number")
                 return render(request,"addbankaccount/bank_details.html")
         else:
-            messages.info(request,"You have to change your mobile no")
+            messages.error(request,"You have to change your mobile no")
             return render(request,"addbankaccount/bank_details.html")
     else:
         return render(request,"addbankaccount/bank_details.html")

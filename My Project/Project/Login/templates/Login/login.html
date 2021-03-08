@@ -1,12 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'Login/base.html' %}
 {% block content %}
 <center>
     <div class="jumbotron" >
     <h3 class="display-4">Login Form</h3>
 </div>
-{% for m in messages%}
-        <h4>{{m}}</h4>
-    {%endfor%}
 <form action="Login/welcome/" method = "post">
     {% csrf_token %}
 <label for="username">Username  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>

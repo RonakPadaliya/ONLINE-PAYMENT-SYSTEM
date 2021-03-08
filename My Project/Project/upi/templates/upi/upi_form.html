@@ -8,6 +8,7 @@
         <h3 class="display-4"></h3>
     </div>
     <h2>You have not added bank account So you cannot able to create UPI PIN.</h2><br>
+    <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
     </center>
 {% elif request.session.user_upi_staus == 0 %}
 <h1 class="display-4">UPI Form</h1>
@@ -51,6 +52,7 @@
         <h3 class="display-4"></h3>
     </div>
     <h2>You are already created UPI PIN.</h2><br>
+    <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
     </center>
 {% endif %}
 {% endblock %}

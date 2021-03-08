@@ -42,19 +42,19 @@ def acno(request):
                         t.receiver_acno=receiver_ac_no
                         t.payment_type="acno"
                         t.save()
-                        messages.info(request,"Successfully payment Done")
+                        messages.success(request,"Successfully payment Done")
                         return redirect('http://127.0.0.1:8000/Login/welcome/')
                     else:
-                        messages.info(request,"Your balance is too low")
+                        messages.error(request,"Your balance is too low")
                         return render(request,'make_payment/acno.html')
                 else:
-                    messages.info(request,"upi is invalid")
+                    messages.error(request,"upi is invalid")
                     return render(request,'make_payment/acno.html')
             else:
-                messages.info(request,"receiver ac no is invalid")
+                messages.error(request,"receiver ac no is invalid")
                 return render(request,'make_payment/acno.html')
         else:
-            messages.info(request,"your acno is invalid")
+            messages.error(request,"your acno is invalid")
             return render(request,'make_payment/acno.html')
     else:
         return render(request,'make_payment/acno.html')
@@ -96,19 +96,19 @@ def mobile_no(request):
                             t.receiver_acno = Bank.objects.filter(mobile=receiver_mobile_no).first().acno
                             t.payment_type = "mobileno"
                             t.save()
-                            messages.info(request, "Successfully payment Done")
+                            messages.success(request, "Successfully payment Done")
                             return redirect('http://127.0.0.1:8000/Login/welcome/')
                         else:
-                            messages.info(request, "Your balance is too low")
+                            messages.error(request, "Your balance is too low")
                             return render(request, 'make_payment/mobile_no.html')
                     else:
-                        messages.info(request, "upi is invalid")
+                        messages.error(request, "upi is invalid")
                         return render(request, 'make_payment/mobile_no.html')
             else:
-                messages.info(request, "receiver mobile no is invalid")
+                messages.error(request, "receiver mobile no is invalid")
                 return render(request, 'make_payment/mobile_no.html')
         else:
-            messages.info(request, "your acno is invalid")
+            messages.error(request, "your acno is invalid")
             return render(request, 'make_payment/mobile_no.html')
     else:
         return render(request, 'make_payment/mobile_no.html')

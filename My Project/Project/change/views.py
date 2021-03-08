@@ -17,10 +17,10 @@ def change_mobile(request):
                 u =Users_info.objects.filter(username=check_username).first()
                 u.mobile = newmobile
                 u.save()
-                messages.info(request,"successfully changed")
+                messages.success(request,"successfully changed")
                 return redirect('http://127.0.0.1:8000/Login/welcome')
         else:
-            messages.info(request,"Wrong MobileNo")
+            messages.error(request,"Wrong MobileNo")
             return render(request,"change/change_mobile.html")
     else:
         return render(request,"change/change_mobile.html")
@@ -44,24 +44,24 @@ def change_bank_account(request):
                             b.save()
                             oldac.save()
                             request.session['status']=1
-                            messages.info(request,"Sucessfully connected")
+                            messages.success(request,"Sucessfully connected")
                             return redirect('http://127.0.0.1:8000/Login/welcome')
                         else:
-                            messages.info(request, "Your mobile no is linked with mutiple account")
+                            messages.error(request, "Your mobile no is linked with mutiple account")
                             return render(request, 'addbankaccount/bank_details.html')
                     else:
-                        messages.info(request,"Your mobile number is not linked with Bank")
+                        messages.error(request,"Your mobile number is not linked with Bank")
                         return render(request,"change/change_bank_account.html")
                 else:
-                    messages.info(request,"Invalid account number")
+                    messages.error(request,"Invalid account number")
                     return render(request,"change/change_bank_account.html")
             else:
-                messages.info(request,"You have to change your mobile no")
+                messages.error(request,"You have to change your mobile no")
                 return render(request,"change/change_bank_account.html")
         else:
             return render(request,"change/change_bank_account.html")
     else:
-        messages.info(request,"you need to first add bank account")
+        messages.error(request,"you need to first add bank account")
         return render(request,'change/change_bank_account_not_add_bank_account.html')
 
 
@@ -80,16 +80,16 @@ def change_upi(request):
                         u.upi=newpin
                         request.session['user_upi']=newpin
                         u.save()
-                        messages.info(request,"successfully changed")
+                        messages.success(request,"successfully changed")
                         return redirect(request,'../Login/welcome')
                     else:
-                        messages.info(request,"Invalid PIN")
+                        messages.error(request,"Invalid PIN")
                         return render(request,'change/change_upi.html')
                 else:
-                    messages.info(request,"Invalid password")
+                    messages.error(request,"Invalid password")
                     return render(request,'change/change_upi.html')
             else:
-                messages.info(request,"Invalid username")
+                messages.error(request,"Invalid username")
                 return render(request,'change/change_upi.html')
         else:
             return render(request,'change/change_upi.html')
