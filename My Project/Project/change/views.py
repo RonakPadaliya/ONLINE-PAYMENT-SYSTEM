@@ -27,28 +27,28 @@ def change_mobile(request):
 
 
 def change_bank_account(request):
-    print(request.session['user_status'])
     if request.session.get('user_status') != 0:
         if request.method=="POST":
             mobile=request.POST['mobile']
-            acno=request.POST['acno']
+            oldacno=request.POST['oldacno']
+            newacno=request.POST['newacno']
             check=request.session['user_username']
             if mobile == Users_info.objects.filter(username=check).first().mobile:
-                if Bank.objects.filter(acno=acno).exists():
-                    if mobile == Bank.objects.filter(acno=acno).first().mobile:
-                        b=Bank.objects.filter(acno=acno).first()
-                        b.status=1
-                        u=Users_info.objects.filter(username=check).first()
-                        u.status=1
-                        oldac=request.session['bank_acno']
-                        oldac_obj=Bank.objects.filter(acno=oldac).first()
-                        oldac_obj.username=None
-                        b.username=Users_info.objects.get(username=check)
-                        u.save()
-                        b.save()
-                        request.session['status']=1
-                        messages.info(request,"Sucessfully connected")
-                        return redirect('http://127.0.0.1:8000/Login/welcome')
+                if Bank.objects.filter(acno=newacno).exists():
+                    if mobile == Bank.objects.filter(acno=newacno).first().mobile:
+                        if len(list(Bank.objects.raw(f'SELECT * FROM addbankaccount_bank where mobile={mobile}'))) == 1:
+                            b=Bank.objects.filter(acno=newacno).first()
+                            oldac=Bank.objects.filter(acno=oldacno).first()
+                            oldac.username=None
+                            b.username=Users_info.objects.get(username=check)
+                            b.save()
+                            oldac.save()
+                            request.session['status']=1
+                            messages.info(request,"Sucessfully connected")
+                            return redirect('http://127.0.0.1:8000/Login/welcome')
+                        else:
+                            messages.info(request, "Your mobile no is linked with mutiple account")
+                            return render(request, 'addbankaccount/bank_details.html')
                     else:
                         messages.info(request,"Your mobile number is not linked with Bank")
                         return render(request,"change/change_bank_account.html")

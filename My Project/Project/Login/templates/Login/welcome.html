@@ -31,9 +31,13 @@
 			<li><a href="{% url 'change:change_upi'%}">Change UPI</a></li>
 		  </ul>
 		 
-		  <br>
-		  <br>
+		  <ul class="nav navbar-nav">
+			<li><a href="{% url 'make_payment:payment_method' %}">Make payment</a></li>
+		  </ul>
 
+		  <ul class="nav navbar-nav">
+			<li><a href="{% url 'transaction_history:history' %}">Transaction history</a></li>
+		  </ul>
 		<ul class="nav navbar-nav">
 			<li><a href="{% url 'Login:logout' %}">Logout</a></li>
 		  </ul>

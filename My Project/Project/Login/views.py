@@ -48,8 +48,7 @@ def registration(request):
     else:
         return render(request, 'Login/registration.html')
 def welcome(request):
-    print("hello")
-    if request.session.get('user_username') is not None:
+    if request.session.get('user_username') is None:
         if request.method == "POST":
             username = request.POST['username']
             password = request.POST['password']
@@ -62,8 +61,8 @@ def welcome(request):
                 request.session['user_upi'] = u.upi
                 request.session['user_upi_staus'] = u.upi_staus
                 request.session['user_email'] = u.email
-                request.session['user_acno']=u.acno
-                request.session['user_balance']=u.balance
+                # request.session['user_acno']=u.acno
+                # request.session['user_balance']=u.balance
                 p=u.status
                 print(p)
                 print(u.username)
@@ -77,7 +76,7 @@ def welcome(request):
         return render(request,'Login/welcome.html')
         
 def logout(request):
-    if 'username' in request.session:
+    if 'user_username' in request.session:
         del request.session['user_username']
         del request.session['user_password']
         del request.session['user_mobile']

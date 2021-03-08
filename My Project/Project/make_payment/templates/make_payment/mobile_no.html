@@ -1,0 +1,36 @@
+{% extends 'make_payment/base.html' %}
+{% block content %}
+<center>
+    <form method="POST" class="form-group" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="jumbotron" >
+    <h3 class="display-4">Payment</h3>
+</div>
+        {% for m in messages%}
+        <h5>{{m}}</h5>
+    {%endfor%}
+        <label>Enter Your Account No:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name = "acno" value = "" id="acno" placeholder="Enter Your acno">
+
+
+        <br><br>
+        <label>Enter amount:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" name = "amount" value = "" id="amount" placeholder="Enter Amount">
+
+
+        <br><br><label>Enter purpose :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name = "purpose" value = "" id="purpose" placeholder="Enter Your purpose">
+
+
+        <br><br><label>Enter receiver Mobile No:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" name = "receiver_mobile_no" value = "" id="receiver_mobile_no" placeholder="Enter receiver Mobile NO">
+
+
+        <br><br><label>Enter UPI PIN:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" name = "upi" value = "" id="upi" placeholder="Enter UPI">
+        <button type="submit" class="btn btn-success">Pay</button>
+
+    </form>
+    </center>
+{% endblock %}

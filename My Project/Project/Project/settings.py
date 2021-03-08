@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'addbankaccount',
     'upi',
     'change',
-    'make_payment'
+    'make_payment',
+    'transaction_history'
 ]
 
 MIDDLEWARE = [

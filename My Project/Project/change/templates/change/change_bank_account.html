@@ -15,11 +15,16 @@
             <label>Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <input type="number" name = "mobile" value = "" id="mobile">
             <br><br>
-            <label> Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="acno" value="" id="acno">
+            <label> OLD Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="oldacno" value="" id="oldacno">
+            <br><br>
+            <label> NEW Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="newacno" value="" id="newacno">
             <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="submit" class="btn btn-success">Add</button>
             <br>
+                        <br>
+           <h3> For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
         </form>
     </center>
 {% endblock %}
