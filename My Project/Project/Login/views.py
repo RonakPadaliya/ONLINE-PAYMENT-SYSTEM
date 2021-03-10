@@ -41,7 +41,7 @@ def registration(request):
             # if passwords are not match then again render register pagr
             else:
                 messages.error(request, "password does not match")
-                return redirect('registration')
+                return render(request, 'Login/registration.html')
         else:
             messages.error(request, "please enter the data")
             messages.error(request, "all fields are must required")
