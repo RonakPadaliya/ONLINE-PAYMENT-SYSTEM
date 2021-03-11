@@ -26,6 +26,7 @@
 			  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="{% url 'addbankaccount:bank_form'%}">Add Bank Account</a>
 				<a class="dropdown-item" href="{% url 'change:change_bank_account'%}">Change Bank Account</a>
+				<a class="dropdown-item" href="{% url 'change:remove_bank_account'%}">Remove Bank Account</a>
 			  </div>
 			</li>
 			<li class="nav-item dropdown active">
@@ -38,6 +39,9 @@
 				</div>
 			  </li>
 		  </ul>
+		  <li class="nav-item active">
+			<a class="nav-link" href="{% url 'Profile:profile' %}">Profile</a>
+		  </li>
 		  <form class="form-inline my-2 my-lg-0">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'Login:logout' %}">Logout</a></button>
 		  </form>
@@ -62,7 +66,7 @@
 	{% load static %}
 	
 	<section align = "center">
-		<h1>Welcome,{{request.session.user_username}}</h1>
+		<h1>Welcome,{{request.session.user_username}}<br>
 		<img src="{% static '2.jpg' %}" width="100%" height="100% " style="z-index: -1;">
 	</section>
 	{% endblock %}

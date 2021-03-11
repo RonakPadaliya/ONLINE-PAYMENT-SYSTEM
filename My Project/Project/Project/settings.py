@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'upi',
     'change',
     'make_payment',
-    'transaction_history'
+    'transaction_history',
+    'Profile'
 ]
 
 MIDDLEWARE = [

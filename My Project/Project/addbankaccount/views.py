@@ -20,11 +20,11 @@ def bank_form(request):
                         u = Users_info.objects.filter(username=check).first()
                         u.status=1
                         b.username = Users_info.objects.get(username =check)
-                        u.acno=acno
                         u.save()
                         b.save()
                         request.session['user_status']=1
-                        request.session['bank_acno']=acno
+                        request.session['bank_status']=1
+                        request.session['bank_balance']=b.balance
                         messages.success(request,"Sucessfully connected")
                         return redirect('http://127.0.0.1:8000/upi')
                     else:

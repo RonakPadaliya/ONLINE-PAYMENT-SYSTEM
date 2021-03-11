@@ -5,19 +5,8 @@
 
     </head>
     <body>
-        <!-- <table>
-            <tbody>
-                {% for data in history%}
-                <tr>
-                    <td>{{data.Transaction_id}}</td>
-                    <td>{{data.sender_name}}</td>
-                    <td>{{data.sender_mobile}}</td>
-                    <td>{{data.sender_acno}}</td>
-                    <td>{{data.sender_amount}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table> -->
+        <div class="container my-4">
+            <h1>Transaction History</h1>
         <table class="table">
             <thead>
               <tr>
@@ -52,5 +41,6 @@
                 {% endfor %}
             </tbody>
           </table>
+        </div>
     </body>
 </html>

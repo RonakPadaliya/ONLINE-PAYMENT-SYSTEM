@@ -41,7 +41,7 @@ def registration(request):
             # if passwords are not match then again render register pagr
             else:
                 messages.error(request, "password does not match")
-                return render(request, 'Login/registration.html')
+                return redirect('registration')
         else:
             messages.error(request, "please enter the data")
             messages.error(request, "all fields are must required")
@@ -57,6 +57,8 @@ def welcome(request):
             if Users_info.objects.filter(username=username).exists() and Users_info.objects.filter(username=username).first().password==password:
                 u=Users_info.objects.filter(username=username).first()
                 request.session['user_username'] = u.username
+                request.session['user_fname']=u.first_name
+                request.session['user_lname']=u.last_name
                 request.session['user_password'] = u.password
                 request.session['user_mobile'] = u.mobile
                 request.session['user_status'] = u.status

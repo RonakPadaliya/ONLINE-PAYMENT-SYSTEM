@@ -25,6 +25,7 @@ def acno(request):
                     if amount < Bank.objects.filter(username=username).first().balance-100:
                         current_b=Bank.objects.filter(username=username).first()
                         current_b.balance=current_b.balance-amount
+                        request.session['bank_balance']=current_b.balance
                         receiver_b=Bank.objects.filter(acno=receiver_ac_no).first()
                         receiver_b.balance=receiver_b.balance+amount
                         current_b.save()
@@ -79,6 +80,7 @@ def mobile_no(request):
                         if amount < Bank.objects.filter(username=username).first().balance-100:
                             current_b = Bank.objects.filter(username=username).first()
                             current_b.balance = current_b.balance - amount
+                            request.session['bank_balance']=current_b.balance
                             receiver_b = Bank.objects.filter(acno=receiver_ac_no).first()
                             receiver_b.balance = receiver_b.balance + amount
                             current_b.save()
@@ -104,6 +106,9 @@ def mobile_no(request):
                     else:
                         messages.error(request, "upi is invalid")
                         return render(request, 'make_payment/mobile_no.html')
+                else:
+                    messages.error(request,'User is not registered')
+                    return render(request,'make_payment/mobile_no.html')
             else:
                 messages.error(request, "receiver mobile no is invalid")
                 return render(request, 'make_payment/mobile_no.html')

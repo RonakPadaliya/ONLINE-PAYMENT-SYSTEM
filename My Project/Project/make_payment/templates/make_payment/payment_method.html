@@ -7,17 +7,8 @@
         <div class="jumbotron" >
             <h3 class="display-4">Select Payment Method</h3>
         </div>
-        {% for m in messages%}
-            <h4>{{m}}</h4>
-        {% endfor %}
         <form method = "post" action="">
             {% csrf_token %}
-            <!-- <lable>Select Payment Method :</lable> -->
-            <!-- <select name="paymentmethod">
-                <option value='base.html'><a>Using Mobile Number</a></option>
-                <option value='usingaccountnumber'>Using Account Number</option>
-            </select>
-            <button type="submit" class="btn btn-success">Make Payment</button> -->
             <br><button type="submit" class="btn btn-light"><a href="make_payment/mobile_no">1.Mobile number</a></button>
             <br><br><br><button type="submit" class="btn btn-light"><a href="{% url 'make_payment:acno' %}">2.Using Account Number</a></>
         </form>

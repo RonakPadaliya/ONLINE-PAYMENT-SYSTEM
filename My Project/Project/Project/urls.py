@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^upi', include("upi.urls")),
     url(r'^change',include("change.urls")),
     url(r'^make_payment',include("make_payment.urls")),
-    url(r'^transaction_history',include("transaction_history.urls"))
+    url(r'^transaction_history',include("transaction_history.urls")),
+    url(r'^Profile',include("Profile.urls"))
 ]

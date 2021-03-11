@@ -11,11 +11,11 @@ def change_mobile(request):
         check_username=request.session['user_username']
         if oldmobile == Users_info.objects.filter(username=check_username).first().mobile:
             if Users_info.objects.filter(mobile=newmobile).exists():
-                messages.info(request,"Already Mobile NO is taken")
+                messages.error(request,"Already Mobile NO is taken")
                 return render(request,'change/change_mobile.html')
             else:
                 u =Users_info.objects.filter(username=check_username).first()
-                u.mobile = newmobile
+                u.mobile=newmobile
                 u.save()
                 messages.success(request,"successfully changed")
                 return redirect('http://127.0.0.1:8000/Login/welcome')
@@ -27,7 +27,7 @@ def change_mobile(request):
 
 
 def change_bank_account(request):
-    if request.session.get('user_status') != 0:
+    if request.session.get('user_status') is not None:
         if request.method=="POST":
             mobile=request.POST['mobile']
             oldacno=request.POST['oldacno']
@@ -40,12 +40,21 @@ def change_bank_account(request):
                             b=Bank.objects.filter(acno=newacno).first()
                             oldac=Bank.objects.filter(acno=oldacno).first()
                             oldac.username=None
+                            oldac.status=None
                             b.username=Users_info.objects.get(username=check)
+                            b.status=1
                             b.save()
                             oldac.save()
-                            request.session['status']=1
+                            u=Users_info.objects.filter(username=check).first()
+                            u.upi=None
+                            u.upi_staus=None
+                            request.session['user_status']=1
+                            request.session['bank_status']=1
+                            request.session['bank_balance']=b.balance
+                            request.session['user_upi_staus']=None
+                            u.save()
                             messages.success(request,"Sucessfully connected")
-                            return redirect('http://127.0.0.1:8000/Login/welcome')
+                            return redirect('http://127.0.0.1:8000/upi')
                         else:
                             messages.error(request, "Your mobile no is linked with mutiple account")
                             return render(request, 'addbankaccount/bank_details.html')
@@ -66,22 +75,23 @@ def change_bank_account(request):
 
 
 def change_upi(request):
-    if request.session['user_upi_staus'] == 1:
-        if request.method =="post":
+    if request.session['user_upi_staus'] is not None:
+        if request.method == "POST" :
             username = request.POST['username']
             password = request.POST['password']
             oldpin = request.POST['oldpin']
             newpin = request.POST['newpin']
-
-            if username == request.session['user_username']:
-                if password == request.session['user_password']:
-                    if oldpin == request.session['user_upi']:
+            check=request.session['user_username']
+            oldpin=int(oldpin)
+            request.session['user_upi']=int(request.session['user_upi'])
+            if username == check:
+                if password == Users_info.objects.filter(username=check).first().password:
+                    if oldpin == Users_info.objects.filter(username=check).first().upi:
                         u=Users_info.objects.filter(username=username).first()
                         u.upi=newpin
-                        request.session['user_upi']=newpin
                         u.save()
                         messages.success(request,"successfully changed")
-                        return redirect(request,'../Login/welcome')
+                        return render(request,'Login/welcome.html')
                     else:
                         messages.error(request,"Invalid PIN")
                         return render(request,'change/change_upi.html')
@@ -93,7 +103,44 @@ def change_upi(request):
                 return render(request,'change/change_upi.html')
         else:
             return render(request,'change/change_upi.html')
-    elif request.session['user_status'] == 0:
+    elif request.session['user_status'] is None:
         return render(request,'change/change_upi_not_add_bank_account.html')
-    elif request.session['user_upi_staus'] == 0:
+    elif request.session['user_upi_staus'] is None:
         return render(request,"change/change_upi_not_create_upi.html")
+
+def remove_bank_account(request):
+    if request.session.get('user_status') is not None:
+        if request.method=="POST":
+            mobile=request.POST['mobile']
+            acno=request.POST['acno']
+            password=request.POST['password']
+            acno=int(acno)
+            check_username=request.session['user_username']
+            if mobile == Users_info.objects.filter(username=check_username).first().mobile:
+                if acno == Bank.objects.filter(acno=acno).first().acno:
+                    if password == Users_info.objects.filter(password=password).first().password:
+                        b = Bank.objects.filter(acno=acno).first()
+                        b.username=None
+                        b.status=None
+                        u = Users_info.objects.filter(username=check_username).first()
+                        u.status=None
+                        u.upi=None
+                        u.upi_staus=None
+                        b.save()
+                        u.save()
+                        request.session['user_status']=None
+                        messages.success(request,"Successsfully Bank account removed")
+                        return render(request,"Login/welcome.html")
+                    else:
+                        messages.error(request,"Password is Incorrect")
+                        return render(request,"change/remove_bank_account.html")
+                else:
+                    messages.error(request,"Account number is invalid")
+                    return render(request,"change/remove_bank_account.html")
+            else:
+                messages.error(request,"Mobile number is Invalid")
+                return render(request,"change/remove_bank_account.html")
+        else:
+            return render(request,"change/remove_bank_account.html")
+    else:
+        return render(request,'change/remove_bank_account_not_add_bank_account.html')

@@ -1,0 +1,27 @@
+{% extends 'change/base.html' %}
+{% block content %}
+<h1 class="display-4">Remove bank account</h1>
+                <p class="lead font-italic" >You are removing your bank account......</p>
+            <hr class="my-4">
+    <center>
+        <div class="jumbotron" >
+            <h3 class="display-4">Remove Bank Account</h3>
+        </div>
+    
+        <form method = "post" action="">
+            {% csrf_token %}
+            <label>Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name = "mobile" value = "" id="mobile" required>
+            <br><br>
+            <label> OLD Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number" name="acno" value="" id="acno" required>
+            <br><br>
+            <label> Password  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="password" name="password" value="" id="password" required>
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-success">Remove</button>
+            <br>
+            <br>
+        </form>
+    </center>
+{% endblock %}

@@ -7,5 +7,5 @@ class Bank(models.Model):
     last_name=models.CharField(max_length=100)
     mobile=models.CharField(max_length=10)
     balance=models.IntegerField()
-    status=models.IntegerField(default=0)
+    status=models.IntegerField(null=True)
     username=models.ForeignKey(Users_info,on_delete=models.CASCADE,null=True)
