@@ -5,7 +5,12 @@ from addbankaccount.models import Bank
 from .models import Transaction
 # Create your views here.
 def payment_method(request):
-    return render(request,'make_payment/payment_method.html')
+    if request.session.status is None:
+        return render(request,'make_payment/payment_not_add_bankaccount.html')
+    elif request.session.bank_status is None :
+        return render(request,'make_payment/payment_not_create_upi.html')
+    else:
+        return render(request,'make_payment/payment_method.html')
 
 def acno(request):
     if request.method == "POST":
