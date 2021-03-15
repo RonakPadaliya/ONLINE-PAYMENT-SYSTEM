@@ -5,9 +5,9 @@ from addbankaccount.models import Bank
 from .models import Transaction
 # Create your views here.
 def payment_method(request):
-    if request.session.status is None:
+    if request.session['user_status'] is None:
         return render(request,'make_payment/payment_not_add_bankaccount.html')
-    elif request.session.bank_status is None :
+    elif request.session['user_upi_staus'] is None :
         return render(request,'make_payment/payment_not_create_upi.html')
     else:
         return render(request,'make_payment/payment_method.html')
