@@ -118,7 +118,7 @@ def remove_bank_account(request):
             check_username=request.session['user_username']
             if mobile == Users_info.objects.filter(username=check_username).first().mobile:
                 if acno == Bank.objects.filter(acno=acno).first().acno:
-                    if password == Users_info.objects.filter(password=password).first().password:
+                    if password == Users_info.objects.filter(username=check_username).first().password:
                         b = Bank.objects.filter(acno=acno).first()
                         b.username=None
                         b.status=None
@@ -128,6 +128,8 @@ def remove_bank_account(request):
                         u.upi_staus=None
                         b.save()
                         u.save()
+                        request.session['user_upi']=None
+                        request.session['user_upi_staus']=None
                         request.session['user_status']=None
                         messages.success(request,"Successsfully Bank account removed")
                         return render(request,"Login/welcome.html")

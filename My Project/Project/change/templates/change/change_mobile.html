@@ -13,10 +13,10 @@
     <form method = "post" action="">
         {% csrf_token %}
         <label>Enter OLD Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "oldmobile" value = "" id="oldmobile">
+        <input type="number" name = "oldmobile" value = "" id="oldmobile" required>
         <br><br>
         <label>Enter New Mobile NO  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name="newmobile" value="" id="newmobile">
+        <input type="number" name="newmobile" value="" id="newmobile" required>
         <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" class="btn btn-success">change</button>
         <br>

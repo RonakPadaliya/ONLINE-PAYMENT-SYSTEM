@@ -16,16 +16,16 @@
         <form method = "post" action="">
             {% csrf_token %}
             <label>Enter Username : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="text" name = "username" value = "" id="username">
+            <input type="text" name = "username" value = "" id="username" required>
             <br><br>
             <label>Enter Password : :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="password" name="password" value="" id="password">
+            <input type="password" name="password" value="" id="password" required>
             <br><br>
             <label>Enter OLD UPI PIN :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="oldpin" value="" id="oldpin">
+            <input type="number" name="oldpin" value="" id="oldpin" required>
             <br><br>
             <label>Enter NEW UPI PIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="newpin" value="" id="newpin">
+            <input type="number" name="newpin" value="" id="newpin" required>
             
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="submit" class="btn btn-success">Change</button>

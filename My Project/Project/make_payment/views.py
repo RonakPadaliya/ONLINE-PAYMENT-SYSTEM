@@ -22,7 +22,7 @@ def acno(request):
         username=request.session['user_username']
         acno=int(acno)
         receiver_ac_no=int(receiver_ac_no)
-        upi=int(upi)
+        upi=str(upi)
         amount=int(amount)
         if acno == Bank.objects.filter(username=username).first().acno:
             if receiver_ac_no == Bank.objects.filter(acno=receiver_ac_no).first().acno:
@@ -76,7 +76,7 @@ def mobile_no(request):
         username=request.session['user_username']
         acno=int(acno)
         receiver_ac_no=int(receiver_mobile_no)
-        upi=int(upi)
+        upi=str(upi)
         amount=int(amount)
         if acno == Bank.objects.filter(username=username).first().acno:
             if receiver_mobile_no == Bank.objects.filter(acno=receiver_ac_no).first().mobile:
