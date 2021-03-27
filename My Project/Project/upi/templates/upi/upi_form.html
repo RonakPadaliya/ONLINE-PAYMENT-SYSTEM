@@ -1,55 +1,68 @@
 {% extends 'upi/base.html' %}
 {% block content %}
-{%if request.session.user_status is None %}
-<h1 class="display-4" style="color: red;">Alert:</style></h1>
-<hr class="my-4">
-<center>
-    <div class="jumbotron" >
-        <h3 class="display-4"></h3>
-    </div>
-    <h2>You have not added bank account So you cannot able to create UPI PIN.</h2><br>
-    <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
-    </center>
-{% elif request.session.user_upi_staus is None %}
-<h1 class="display-4">UPI Form</h1>
-                <p class="lead font-italic" >You have to craete UPI for secure Payment......</p>
-            <hr class="my-4">
-<center>
-    <div class="jumbotron" >
-        <h3 class="display-4">UPI<h3>
-    </div>
-    <form method = "post" action="">
-        {% csrf_token %}
-        <label>Enter mobile number  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "mobile" value = "" id="mobile">
-        <br><br>
-        <label>Enter account number  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="" name="acno" value="" id="acno">
-        <br><br>
-        <label>Enter username : :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name="username" value="" id="username">
-        <br><br>
-        <label>Enter Password :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="password" name="password" value="" id="password">
-        <br><br>
-        <label>Enter UPI PIN :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="password" name="upi" value="" id="upi">
-        <br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <button type="submit" class="btn btn-success">change</button>
-        <br>
-    </form>
-</center>
-{% else %}
-<h1 class="display-4" style="color: red;">Alert:</style></h1>
-<hr class="my-4">
-<center>
-    <div class="jumbotron" >
-        <h3 class="display-4"></h3>
-    </div>
-    <h2>You are already created UPI PIN.</h2><br>
-    <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
-    </center>
-{% endif %}
+    {%if request.session.user_status is None %}
+        <h1 class="display-4" style="color: red;">Alert:</style>
+        </h1>
+        <hr class="my-4">
+        <center>
+            <div class="jumbotron">
+                <h3 class="display-4"></h3>
+            </div>
+            <h2>You have not added bank account So you cannot able to create UPI PIN.</h2><br>
+            <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
+        </center>
+    {% elif request.session.user_upi_staus is None %}
+        <h1 class="display-4">UPI Form</h1>
+        <p class="lead font-italic">You have to craete UPI for secure Payment......</p>
+        <hr class="my-4">
+        <center>
+            <div class="jumbotron">
+                <h3 class="display-4">UPI<h3>
+            </div>
+            <style>
+                table,th,td {
+                    padding: 15px;
+                }
+            </style>
+            <form method="post" action="">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>Enter mobile number :</th>
+                        <td><input type="number" name="mobile" value="" id="mobile" required></td>
+                    </tr>
+                    <tr>
+                        <th>Enter account number :</th>
+                        <td><input type="" name="acno" value="" id="acno" required></td>
+                    </tr>
+                    <tr>
+                        <th>Enter username :</th>
+                        <td><input type="text" name="username" value="" id="username" required></td>
+                    </tr>
+                    <tr>
+                        <th>Enter Password :</th>
+                        <td><input type="password" name="password" value="" id="password" required></td>
+                    </tr>
+                    <tr>
+                        <th>Enter UPI PIN :</th>
+                        <td><input type="password" name="upi" value="" id="upi" required></td>
+                    </tr>
+                    <tr align="center">
+                        <th colspan="2"><button type="submit" class="btn btn-success">change</button></th>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    {% else %}
+        <h1 class="display-4" style="color: red;">Alert:</style>
+        </h1>
+        <hr class="my-4">
+        <center>
+            <div class="jumbotron">
+                <h3 class="display-4"></h3>
+            </div>
+            <h2>You are already created UPI PIN.</h2><br>
+            <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
+        </center>
+    {% endif %}
 {% endblock %}

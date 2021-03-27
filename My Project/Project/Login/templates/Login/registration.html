@@ -3,32 +3,55 @@
 {% block title %}Create an Account{% endblock %}
 
 {% block content %}
+<style>
+    table,
+    th,
+    td {
+        padding: 15px;
+    }
+</style>
 
 <center>
     <form method="POST" class="form-group" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="jumbotron" >
-    <h3 class="display-4">Registration Form</h3>
-</div>
-        <label>Enter First Name:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "firstname" value = "" id="firstname" placeholder="Enter first name">
-        <br>
-        <br>
-        <label>Enter Last Name:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "lastname" value = "" id="lastname" placeholder="Enter last name">
-        <br><br><label>Email-ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="email" name = "email" value = "" id="email" placeholder="Enter Email">
-        <br><br><label>Enter Mobile No:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "mobile" value = "" id="mobile" placeholder="Enter Mobile No">
-        <br><br><label for="username">Enter UserName:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "username" value = "" id="username" placeholder="Enter username">
-        <br><br><label for="password"> Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="password" name="password" value="" id="password" placeholder="Enter Password">
-        <br><br><label for="password"> Re-Enter Password:</label>
-        <input type="password" name="password2" value="" id="reenter_password" placeholder="Re-enter password">
-        <br><br>
-        <button type="submit" class="btn btn-success">Register</button>
+        <div class="jumbotron">
+            <h3 class="display-4">Registration Form</h3>
+        </div>
+
+        <table>
+            <tr>
+                <th>Enter First Name:</th>
+                <td><input type="text" name="firstname" value="" id="firstname" placeholder="Enter first name" required></td>
+            </tr>
+            <tr>
+                <th>Enter Last Name:</th>
+                <td><input type="text" name="lastname" value="" id="lastname" placeholder="Enter last name" required></td>
+            </tr>
+            <tr>
+                <th>Email-ID:</th>
+                <td><input type="email" name="email" value="" id="email" placeholder="Enter Email" required></td>
+            </tr>
+            <tr>
+                <th>Enter Mobile No:</th>
+                <td><input type="number" name="mobile" value="" id="mobile" placeholder="Enter Mobile No" required></td>
+            </tr>
+            <tr>
+                <th>Enter UserName:</th>
+                <td><input type="text" name="username" value="" id="username" placeholder="Enter username" required></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" name="password" value="" id="password" placeholder="Enter Password" required></td>
+            </tr>
+            <tr>
+                <th>Re-Enter Password:</th>
+                <td><input type="password" name="password2" value="" id="reenter_password" placeholder="Re-enter password" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Register</button></th>
+            </tr>
+        </table>
     </form>
-    </center>
+</center>
 {% endblock %}

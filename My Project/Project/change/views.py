@@ -11,7 +11,7 @@ def change_mobile(request):
         check_username=request.session['user_username']
         if oldmobile == Users_info.objects.filter(username=check_username).first().mobile:
             if Users_info.objects.filter(mobile=newmobile).exists():
-                messages.error(request,"Already Mobile NO is taken")
+                messages.error(request,"Already Mobile Number is taken")
                 return render(request,'change/change_mobile.html')
             else:
                 u =Users_info.objects.filter(username=check_username).first()
@@ -70,7 +70,7 @@ def change_bank_account(request):
         else:
             return render(request,"change/change_bank_account.html")
     else:
-        messages.error(request,"you need to first add bank account")
+        messages.error(request,"You need to first add bank account")
         return render(request,'change/change_bank_account_not_add_bank_account.html')
 
 
@@ -86,10 +86,11 @@ def change_upi(request):
             request.session['user_upi']=int(request.session['user_upi'])
             if username == check:
                 if password == Users_info.objects.filter(username=check).first().password:
-                    if oldpin == Users_info.objects.filter(username=check).first().upi:
+                    if oldpin == int(Users_info.objects.filter(username=check).first().upi):
                         u=Users_info.objects.filter(username=username).first()
                         u.upi=newpin
                         u.save()
+                        request.session['user_upi']=newpin
                         messages.success(request,"successfully changed")
                         return render(request,'Login/welcome.html')
                     else:

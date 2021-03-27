@@ -8,16 +8,28 @@
         <div class="jumbotron" >
             <h3 class="display-4">Add Bank Account</h3>
         </div>
+        <style>
+            table,
+            th,
+            td {
+                padding: 15px;
+            }
+        </style>
         <form method = "post" action="">
             {% csrf_token %}
-            <label>Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name = "mobile" value = "" id="mobile">
-            <br><br>
-            <label> Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="acno" value="" id="acno">
-            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-success">Add</button>
-            <br>
+            <table>
+                <tr>
+                    <th>Mobile No :</th>
+                    <td><input type="number" name = "mobile" value = "" id="mobile" required></td>
+                </tr>
+                <tr>
+                    <th>Account No :</th>
+                    <td><input type="number" name="acno" value="" id="acno" required></td>
+                </tr>
+                <tr align="center">
+                    <th colspan="2"><button type="submit" class="btn btn-success">Add</button></th>
+                </tr>
+            </table>
            <h3> For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
         </form>
     </center>

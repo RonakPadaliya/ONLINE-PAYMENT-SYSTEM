@@ -1,22 +1,32 @@
 {% extends 'Login/base.html' %}
 {% block content %}
 <center>
-    <div class="jumbotron" >
-    <h3 class="display-4">Login Form</h3>
-</div>
-<form action="Login/welcome/" method = "post">
-    {% csrf_token %}
-<label for="username">Username  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-<input type="text" name = "username" value = "" id="username" placeholder="Enter username">
-    <br><br>
-<label for="password"> Password  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-<input type="password" name="password" value="" id="password" placeholder="Enter Password">
-    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="submit" class="btn btn-success">Login</button>
-<br>
-    <br>
-    <a href="{% url 'Login:registration'%}">New User</a>
-</form>
+    <div class="jumbotron">
+        <h3 class="display-4">Login Form</h3>
+    </div>
+    <form action="Login/welcome/" method="post">
+        {% csrf_token %}
+        <style>
+            table,th,td{
+                padding: 15px;
+            }
+        </style>
+
+        <table>
+            <tr>
+                <th>Username :</th>
+                <td><input type="text" name="username" value="" id="username" placeholder="Enter username" required></td>
+            </tr>
+            <tr>
+                <th>Password :</th>
+                <td><input type="password" name="password" value="" id="password" placeholder="Enter Password" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Login</button></th>
+            </tr>
+        </table>
+        <a href="{% url 'Login:registration'%}">New User</a>
+    </form>
 
 </center>
 {% endblock %}

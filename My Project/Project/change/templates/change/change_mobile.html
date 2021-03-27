@@ -1,25 +1,32 @@
 {% extends 'change/base.html' %}
 {% block content %}
 <h1 class="display-4">Change Mobile Number</h1>
-                <p class="lead font-italic" >You are changing your mobile number...</p>
-            <hr class="my-4">
+<p class="lead font-italic">You are changing your mobile number...</p>
+<hr class="my-4">
 <center>
-    <div class="jumbotron" >
+    <div class="jumbotron">
         <h3 class="display-4">Change Mobile Number</h3>
     </div>
-    {% for m in messages%}
-        <h4>{{m}}</h4>
-    {% endfor %}
-    <form method = "post" action="">
+    <style>
+        table,th,td {
+            padding: 15px;
+        }
+    </style>
+    <form method="post" action="">
         {% csrf_token %}
-        <label>Enter OLD Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "oldmobile" value = "" id="oldmobile" required>
-        <br><br>
-        <label>Enter New Mobile NO  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name="newmobile" value="" id="newmobile" required>
-        <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="submit" class="btn btn-success">change</button>
-        <br>
+        <table>
+            <tr>
+                <th>Enter OLD Mobile No :</th>
+                <td><input type="number" name="oldmobile" value="" id="oldmobile" required></td>
+            </tr>
+            <tr>
+                <th>Enter New Mobile NO :</th>
+                <td><input type="number" name="newmobile" value="" id="newmobile" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">change</button></th>
+            </tr>
+        </table>
     </form>
 </center>
 {% endblock %}

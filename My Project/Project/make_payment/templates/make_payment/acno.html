@@ -1,33 +1,43 @@
 {% extends 'make_payment/base.html' %}
 {% block content %}
+<style>
+    table,th,td{
+        padding: 15px;
+    }
+</style>
 <center>
     <form method="POST" class="form-group" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="jumbotron" >
-    <h3 class="display-4">Payment</h3>
-</div>
-        <label>Enter Your Account No:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "acno" value = "" id="acno" placeholder="Enter Your acno" required>
-        
-        
-        <br><br>
-        <label>Enter amount:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "amount" value = "" id="amount" placeholder="Enter Amount" required>
-        
-        
-        <br><br><label>Enter purpose :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "purpose" value = "" id="purpose" placeholder="Enter Your purpose" required>
-        
-        
-        <br><br><label>Enter receiver account No:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="text" name = "receiver_ac_no" value = "" id="receiver_ac_no" placeholder="Enter receiver AC NO" required>
-        
-        
-        <br><br><label>Enter UPI PIN:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" name = "upi" value = "" id="upi" placeholder="Enter UPI" required>
-        <button type="submit" class="btn btn-success">Pay</button>
-    </div>
+        <div class="jumbotron">
+            <h3 class="display-4">Payment</h3>
+        </div>
+            <table>
+                <tr>
+                    <th>Enter Your Account No :</th>
+                    <td><input type="text" name="acno" value="" id="acno" placeholder="Enter Your acno" required></td>
+                </tr>
+                <tr>
+                    <th>Enter amount :</th>
+                    <td><input type="number" name="amount" value="" id="amount" placeholder="Enter Amount" required></td>
+                </tr>
+                <tr>
+                    <th>Enter purpose :</th>
+                    <td><input type="text" name="purpose" value="" id="purpose" placeholder="Enter Your purpose" required></td>
+                </tr>
+                <tr>
+                    <th>Enter receiver account No :</th>
+                    <td><input type="text" name="receiver_ac_no" value="" id="receiver_ac_no" placeholder="Enter receiver AC NO" required></td>
+                </tr>
+                <tr>
+                    <th>Enter UPI PIN :</th>
+                    <td><input type="password" name="upi" value="" id="upi" placeholder="Enter UPI" required></td>
+                </tr>
+                <tr align="center">
+                    <th colspan="2"><button type="submit" class="btn btn-success">Pay</button></th>
+                </tr>
+            </table>
+        </div>
     </form>
-    </center>
+</center>
 {% endblock %}

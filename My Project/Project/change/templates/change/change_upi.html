@@ -1,38 +1,46 @@
 {% extends 'change/base.html' %}
-    {% block content %}
-    <div class="container">
-        <div class="col-md-10.offset-md-1 mt-5">
-            <div class="jumbotron">
-                <h1 class="display-4">Change UPI PIN</h1>
-                <p class="lead font-italic" >You are changing your UPI PIN......</p>
+{% block content %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Change UPI PIN</h1>
+            <p class="lead font-italic">You are changing your UPI PIN......</p>
             <hr class="my-4">
-    <center>
-        <div class="jumbotron" >
-            <h3 class="display-4">Change UPI PIN</h3>
-        </div>
-        {% for m in messages%}
-            <h4>{{m}}</h4>
-        {% endfor %}
-        <form method = "post" action="">
-            {% csrf_token %}
-            <label>Enter Username : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="text" name = "username" value = "" id="username" required>
-            <br><br>
-            <label>Enter Password : :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="password" name="password" value="" id="password" required>
-            <br><br>
-            <label>Enter OLD UPI PIN :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="oldpin" value="" id="oldpin" required>
-            <br><br>
-            <label>Enter NEW UPI PIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="newpin" value="" id="newpin" required>
-            
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-success">Change</button>
-            <br>
-        </form>
-    </center>
-            </div>
+            <center>
+                <div class="jumbotron">
+                    <h3 class="display-4">Change UPI PIN</h3>
+                </div>
+                <style>
+                    table,th,td {
+                        padding: 15px;
+                    }
+                </style>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <th>Enter Username :</th>
+                            <td><input type="text" name="username" value="" id="username" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter Password :</th>
+                            <td><input type="password" name="password" value="" id="password" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter OLD UPI PIN :</th>
+                            <td><input type="password" name="oldpin" value="" id="oldpin" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter NEW UPI PIN :</th>
+                            <td><input type="password" name="newpin" value="" id="newpin" required></td>
+                        </tr>
+                        <tr align="center">
+                            <th colspan="2"><button type="submit" class="btn btn-success">Change</button></th>
+                        </tr>
+                    </table>
+                </form>
+            </center>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

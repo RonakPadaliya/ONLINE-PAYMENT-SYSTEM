@@ -1,30 +1,36 @@
-{% extends 'change/base.html' %}
-{% block content %}
+{% extends 'change/base.html' %} {% block content %}
 <h1 class="display-4">Change bank account</h1>
-                <p class="lead font-italic" >You are changing your bank account......</p>
-            <hr class="my-4">
-    <center>
-        <div class="jumbotron" >
-            <h3 class="display-4">Change Bank Account</h3>
-        </div>
-        {% for m in messages%}
-            <h4>{{m}}</h4>
-        {% endfor %}
-        <form method = "post" action="">
-            {% csrf_token %}
-            <label>Mobile No  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name = "mobile" value = "" id="mobile">
-            <br><br>
-            <label> OLD Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="oldacno" value="" id="oldacno">
-            <br><br>
-            <label> NEW Account No  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="number" name="newacno" value="" id="newacno">
-            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-success">Add</button>
-            <br>
-                        <br>
-           <h3> For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
-        </form>
-    </center>
+<p class="lead font-italic">You are changing your bank account......</p>
+<hr class="my-4" />
+<center>
+    <div class="jumbotron">
+        <h3 class="display-4">Change Bank Account</h3>
+    </div>
+    <style>
+        table,th,td {
+            padding: 15px;
+        }
+    </style>
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Mobile No :</th>
+                <td><input type="number" name="mobile" value="" id="mobile" required></td>
+            </tr>
+            <tr>
+                <th>OLD Account No :</th>
+                <td><input type="number" name="oldacno" value="" id="oldacno" required></td>
+            </tr>
+            <tr>
+                <th>NEW Account No :</th>
+                <td><input type="number" name="newacno" value="" id="newacno" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Add</button></th>
+            </tr>
+        </table>
+        <h3>For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
+    </form>
+</center>
 {% endblock %}
