@@ -86,3 +86,17 @@ def logout(request):
         del request.session['user_email']
     messages.success(request,"you are successfully logout")
     return render(request,'Login/login.html')
+
+def forgot(request):
+    if request.method=="POST":
+        username=request.POST['username']
+        oldp = request.POST['old']
+        newp = request.POST['new']
+            
+        u=Users_info.objects.filter(username=username).first()
+        u.password=newp
+        u.save()
+        messages.success(request,"Your Password is successfully changed !")
+        return render(request,'Login/login.html')
+    else:
+        return render(request, 'Login/forgot.html')
