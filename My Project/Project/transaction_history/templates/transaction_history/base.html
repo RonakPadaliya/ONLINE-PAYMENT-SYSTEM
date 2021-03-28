@@ -25,13 +25,13 @@
             </thead>
             <tbody>
                 {% for data in history%}
-                <tr>
+                <tr align="center">
                     <td>{{data.Transaction_id}}</td>
                     <td>{{data.date}}</td>
                     <td>{{data.sender_name}}</td>
                     <td>{{data.sender_acno}}</td>
                     <td>{{data.sender_mobile}}</td>
-                    <td>{{data.sender_amount}}</td>
+                    <td>{{data.sender_amount}} ₹</td>
                     <td>{{data.sender_purpose}}</td>
                     <td>{{data.payment_type}}</td>
                     <td>{{data.receiver_name}}</td>

@@ -29,7 +29,7 @@ def acno(request):
         if acno == Bank.objects.filter(username=username).first().acno:
             if receiver_ac_no == Bank.objects.filter(acno=receiver_ac_no).first().acno:
                 if upi == Users_info.objects.filter(username=username).first().upi:
-                    if amount < Bank.objects.filter(username=username).first().balance-100:
+                    if amount <= Bank.objects.filter(username=username).first().balance-100:
                         current_b=Bank.objects.filter(username=username).first()
                         current_b.balance=current_b.balance-amount
                         request.session['bank_balance']=current_b.balance
@@ -84,7 +84,7 @@ def mobile_no(request):
             if receiver_mobile_no == Bank.objects.filter(acno=receiver_ac_no).first().mobile:
                 if Bank.objects.filter(acno=receiver_ac_no).first().username is not None:
                     if upi == Users_info.objects.filter(username=username).first().upi:
-                        if amount < Bank.objects.filter(username=username).first().balance-100:
+                        if amount <= Bank.objects.filter(username=username).first().balance-100:
                             current_b = Bank.objects.filter(username=username).first()
                             current_b.balance = current_b.balance - amount
                             request.session['bank_balance']=current_b.balance
