@@ -9,3 +9,4 @@ class Bank(models.Model):
     balance=models.IntegerField()
     status=models.IntegerField(null=True)
     username=models.ForeignKey(Users_info,on_delete=models.CASCADE,null=True)
+    block=models.CharField(max_length=1,null=True)

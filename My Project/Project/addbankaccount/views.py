@@ -25,10 +25,11 @@ def bank_form(request):
                         request.session['user_status']=1
                         request.session['bank_status']=1
                         request.session['bank_balance']=b.balance
+                        request.session['bank_block']=b.block
                         messages.success(request,"Sucessfully connected")
                         return redirect('http://127.0.0.1:8000/upi')
                     else:
-                        messages.error(request,"Your mobile no is linked with mutiple account")
+                        messages.error(request,"Your mobile nummber is linked with mutiple account")
                         return render(request,'addbankaccount/bank_details.html')
                 else:
                     messages.error(request,"Your mobile number is not linked with Bank")
@@ -37,7 +38,7 @@ def bank_form(request):
                 messages.error(request,"Invalid account number")
                 return render(request,"addbankaccount/bank_details.html")
         else:
-            messages.error(request,"You have to change your mobile no")
+            messages.error(request,"You have to change your mobile number")
             return render(request,"addbankaccount/bank_details.html")
     else:
         return render(request,"addbankaccount/bank_details.html")

@@ -1,0 +1,14 @@
+{% extends 'change/base.html' %}
+{% block content %}
+<center>
+    <div class="jumbotron">
+        <h3 class="display-4"></h3>
+
+        <h1 class="display-4" style="color: red;">Alert:</style>
+        </h1>
+        <hr class="my-4">
+        <h2>Your account is allredy unblock...</h2><br>
+        <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button></h3>
+    </div>
+</center>
+{% endblock %}
