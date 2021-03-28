@@ -1,17 +1,24 @@
-{% extends 'make_payment/base.html' %}
+{% extends 'Login/welcome.html' %}
 {% block content %}
 <style>
     table,th,td{
         padding: 15px;
     }
 </style>
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+<h1 class="display-4">Payment using ACNO</h1>
+<p class="lead font-italic">You are do your payment using ACNO...</p>
+<hr class="my-4">
 <center>
     <form method="POST" class="form-group" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="jumbotron">
+        <div class="container">
+            <div class="col-md-10.offset-md-1 mt-5">
+                <div class="jumbotron">
             <h3 class="display-4">Payment</h3>
-        </div>
             <table>
                 <tr>
                     <th>Enter Your Account No :</th>
@@ -38,6 +45,7 @@
                 </tr>
             </table>
         </div>
+        </div></div>
     </form>
-</center>
+</center></div></div></div>
 {% endblock %}
