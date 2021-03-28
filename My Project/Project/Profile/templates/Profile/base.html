@@ -63,6 +63,7 @@
                         </div>
 
                         <input type="submit" value="Update Profile" class="btn btn-primary" style="margin-left:125px;">
+                        <a role="button" class="btn btn-danger" href="{% url 'Profile:deleteAccount' %}">Delete Account</a>
                     </form>
                 </div>
             </div>
@@ -105,6 +106,7 @@
                                 {{u.balance}}
                             </div>
                         </div>
+                        
                     </form>
                 </div>
 

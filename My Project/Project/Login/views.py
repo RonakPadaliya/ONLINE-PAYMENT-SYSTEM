@@ -37,7 +37,7 @@ def registration(request):
                     u = Users_info(username=username, password=password, email=email, first_name=first_name,last_name=last_name, mobile=mobile)
                     u.save()
                     messages.success(request,"Successfully Created account")
-                    return redirect('/Login')
+                    return render(request,'Login/login.html')
             # if passwords are not match then again render register pagr
             else:
                 messages.error(request, "password does not match")
@@ -90,13 +90,20 @@ def logout(request):
 def forgot(request):
     if request.method=="POST":
         username=request.POST['username']
-        oldp = request.POST['old']
+        mobile = request.POST['mobile']
         newp = request.POST['new']
-            
-        u=Users_info.objects.filter(username=username).first()
-        u.password=newp
-        u.save()
-        messages.success(request,"Your Password is successfully changed !")
-        return render(request,'Login/login.html')
+        if(Users_info.objects.filter(username=username).exists()):
+            if(mobile == Users_info.objects.filter(username=username).first().mobile):
+                u=Users_info.objects.filter(username=username).first()
+                u.password=newp
+                u.save()
+                messages.success(request,"Your Password is successfully changed !")
+                return render(request,'Login/login.html')
+            else:
+                messages.error(request,"Your Mobile number is incorrect")
+                return render(request,'Login/login.html')
+        else:
+            messages.success(request,"Username is Invalid")
+            return render(request,'Login/login.html')
     else:
         return render(request, 'Login/forgot.html')
