@@ -36,23 +36,23 @@
                 <table>
                     <tr>
                         <th>Enter mobile number :</th>
-                        <td><input type="number" name="mobile" value="" id="mobile" required></td>
+                        <td><input type="number" class="form-control" name="mobile" value="" id="mobile" pattern="[0-9]{10}" required></td>
                     </tr>
                     <tr>
                         <th>Enter account number :</th>
-                        <td><input type="" name="acno" value="" id="acno" required></td>
+                        <td><input type="number" class="form-control" name="acno" value="" id="acno" pattern="[0-9]{14}" required></td>
                     </tr>
                     <tr>
                         <th>Enter username :</th>
-                        <td><input type="text" name="username" value="" id="username" required></td>
+                        <td><input type="text" class="form-control" name="username" value="" id="username" minlength="6" required></td>
                     </tr>
                     <tr>
                         <th>Enter Password :</th>
-                        <td><input type="password" name="password" value="" id="password" required></td>
+                        <td><input type="password" class="form-control" name="password" value="" id="password" minlength="8" required></td>
                     </tr>
                     <tr>
                         <th>Enter UPI PIN :</th>
-                        <td><input type="password" name="upi" value="" id="upi" required></td>
+                        <td><input type="password" class="form-control" name="upi" value="" id="upi" pattern="[0-9]{4}" required></td>
                     </tr>
                     <tr align="center">
                         <th colspan="2"><button type="submit" class="btn btn-success">change</button></th>

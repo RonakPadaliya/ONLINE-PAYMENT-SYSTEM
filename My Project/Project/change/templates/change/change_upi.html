@@ -20,19 +20,19 @@
                     <table>
                         <tr>
                             <th>Enter Username :</th>
-                            <td><input type="text" name="username" value="" id="username" required></td>
+                            <td><input type="text" class="form-control" name="username" value="" id="username" minlength=6 required></td>
                         </tr>
                         <tr>
                             <th>Enter Password :</th>
-                            <td><input type="password" name="password" value="" id="password" required></td>
+                            <td><input type="password" class="form-control" name="password" value="" id="password" minlength="8" maxlength="16" required></td>
                         </tr>
                         <tr>
                             <th>Enter OLD UPI PIN :</th>
-                            <td><input type="password" name="oldpin" value="" id="oldpin" required></td>
+                            <td><input type="password" class="form-control" name="oldpin" value="" id="oldpin" pattern="[0-9]{4}" required></td>
                         </tr>
                         <tr>
                             <th>Enter NEW UPI PIN :</th>
-                            <td><input type="password" name="newpin" value="" id="newpin" required></td>
+                            <td><input type="password" class="form-control" name="newpin" value="" id="newpin" pattern="[0-9]{4}" required></td>
                         </tr>
                         <tr align="center">
                             <th colspan="2"><button type="submit" class="btn btn-success">Change</button></th>

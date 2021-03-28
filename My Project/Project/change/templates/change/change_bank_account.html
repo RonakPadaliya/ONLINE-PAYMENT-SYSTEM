@@ -20,15 +20,15 @@
         <table>
             <tr>
                 <th>Mobile No :</th>
-                <td><input type="number" name="mobile" value="" id="mobile" required></td>
+                <td><input type="number" class="form-control" name="mobile" value="" id="mobile" pattern="[0-9]{10}" required></td>
             </tr>
             <tr>
                 <th>OLD Account No :</th>
-                <td><input type="number" name="oldacno" value="" id="oldacno" required></td>
+                <td><input type="number"class="form-control" name="oldacno" value="" id="oldacno" pattern="[0-9]{14}" required></td>
             </tr>
             <tr>
                 <th>NEW Account No :</th>
-                <td><input type="number" name="newacno" value="" id="newacno" required></td>
+                <td><input type="number" class="form-control"name="newacno" value="" id="newacno" pattern="[0-9]{14}" required></td>
             </tr>
             <tr align="center">
                 <th colspan="2"><button type="submit" class="btn btn-success">Add</button></th>

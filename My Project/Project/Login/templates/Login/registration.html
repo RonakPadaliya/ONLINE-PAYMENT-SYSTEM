@@ -22,31 +22,31 @@
         <table>
             <tr>
                 <th>Enter First Name:</th>
-                <td><input type="text" name="firstname" value="" id="firstname" placeholder="Enter first name" required></td>
+                <td><input type="text" class="form-control" name="firstname" value="" id="firstname" pattern="[A-Za-z]{1,}" placeholder="Enter first name" required></td>
             </tr>
             <tr>
                 <th>Enter Last Name:</th>
-                <td><input type="text" name="lastname" value="" id="lastname" placeholder="Enter last name" required></td>
+                <td><input type="text" class="form-control" name="lastname" value="" id="lastname" placeholder="Enter last name" pattern="[A-Za-z]{1,}" required></td>
             </tr>
             <tr>
                 <th>Email-ID:</th>
-                <td><input type="email" name="email" value="" id="email" placeholder="Enter Email" required></td>
+                <td><input type="email" class="form-control" name="email" value="" id="email" placeholder="Enter Email" required></td>
             </tr>
             <tr>
                 <th>Enter Mobile No:</th>
-                <td><input type="number" name="mobile" value="" id="mobile" placeholder="Enter Mobile No" required></td>
+                <td><input type="tel" class="form-control" name="mobile" value="" id="mobile" placeholder="Enter Mobile No" pattern="[0-9]{10}" required></td>
             </tr>
             <tr>
                 <th>Enter UserName:</th>
-                <td><input type="text" name="username" value="" id="username" placeholder="Enter username" required></td>
+                <td><input type="text" class="form-control" name="username" value="" id="username" placeholder="Enter username" minlength=6 required></td>
             </tr>
             <tr>
                 <th>Password:</th>
-                <td><input type="password" name="password" value="" id="password" placeholder="Enter Password" required></td>
+                <td><input type="password" class="form-control" name="password" value="" id="password" placeholder="Enter Password" minlength="8" maxlength="15" required></td>
             </tr>
             <tr>
                 <th>Re-Enter Password:</th>
-                <td><input type="password" name="password2" value="" id="reenter_password" placeholder="Re-enter password" required></td>
+                <td><input type="password" class="form-control" name="password2" value="" id="reenter_password" placeholder="Re-enter password" minlength="8" maxlength="15" required></td>
             </tr>
             <tr align="center">
                 <th colspan="2"><button type="submit" class="btn btn-success">Register</button></th>

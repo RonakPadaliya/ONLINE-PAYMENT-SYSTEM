@@ -21,15 +21,15 @@
         <table>
             <tr>
                 <th>Mobile No :</th>
-                <td><input type="number" name="mobile" value="" id="mobile" required></td>
+                <td><input type="number" class="form-control" name="mobile" value="" id="mobile" pattern="[0-9]{10}" required></td>
             </tr>
             <tr>
                 <th>Account No :</th>
-                <td><input type="number" name="acno" value="" id="acno" required></td>
+                <td><input type="number" class="form-control" name="acno" value="" id="acno" pattern="[0-9]{14}" required></td>
             </tr>
             <tr>
                 <th>Password :</th>
-                <td><input type="password" name="password" value="" id="password" required></td>
+                <td><input type="password" class="form-control" name="password" value="" id="password" minlength="8" maxlength="16" required></td>
             </tr>
             <tr align="center">
                 <th colspan="2"><button type="submit" class="btn btn-success">Remove</button></th>

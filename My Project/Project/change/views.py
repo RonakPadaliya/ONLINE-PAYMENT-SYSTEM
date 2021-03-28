@@ -121,7 +121,6 @@ def remove_bank_account(request):
                 mobile=request.POST['mobile']
                 acno=request.POST['acno']
                 password=request.POST['password']
-                acno=int(acno)
                 check_username=request.session['user_username']
                 if mobile == Users_info.objects.filter(username=check_username).first().mobile:
                     if acno == Bank.objects.filter(acno=acno).first().acno:
@@ -163,7 +162,6 @@ def block_bank_account(request):
                 mobile=request.POST['mobile']
                 acno=request.POST['acno']
                 password=request.POST['password']
-                acno=int(acno)
                 check_username=request.session['user_username']
                 if mobile == Users_info.objects.filter(username=check_username).first().mobile:
                     if acno == Bank.objects.filter(acno=acno).first().acno:
@@ -197,7 +195,6 @@ def bank_account_unblock(request):
                 mobile=request.POST['mobile']
                 acno=request.POST['acno']
                 password=request.POST['password']
-                acno=int(acno)
                 check_username=request.session['user_username']
                 if mobile == Users_info.objects.filter(username=check_username).first().mobile:
                     if acno == Bank.objects.filter(acno=acno).first().acno:

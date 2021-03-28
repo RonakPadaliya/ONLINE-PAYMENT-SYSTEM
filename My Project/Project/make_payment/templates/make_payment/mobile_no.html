@@ -22,23 +22,23 @@
         <table>
             <tr>
                 <th>Enter Your Account No :</th>
-                <td><input type="text" name="acno" value="" id="acno" placeholder="Enter Your acno" required></td>
+                <td><input type="text" class="form-control" name="acno" value="" id="acno" placeholder="Enter Your acno" pattern="[0-9]{14}" required></td>
             </tr>
             <tr>
                 <th>Enter amount :</th>
-                <td><input type="number" name="amount" value="" id="amount" placeholder="Enter Amount" min=1 required></td>
+                <td><input type="number" class="form-control" name="amount" value="" id="amount" placeholder="Enter Amount" min=1 required></td>
             </tr>
             <tr>
                 <th>Enter purpose :</th>
-                <td><input type="text" name="purpose" value="" id="purpose" placeholder="Enter Your purpose" required></td>
+                <td><input type="text" class="form-control" name="purpose" value="" id="purpose" placeholder="Enter Your purpose" required></td>
             </tr>
             <tr>
                 <th>Enter receiver Mobile No:</th>
-                <td><input type="text" name="receiver_mobile_no" value="" id="receiver_mobile_no" placeholder="Enter receiver Mobile NO" required></td>
+                <td><input type="text" class="form-control" name="receiver_mobile_no" value="" id="receiver_mobile_no" pattern="[0-9]{10}" placeholder="Enter receiver Mobile NO" required></td>
             </tr>
             <tr>
                 <th>Enter UPI PIN :</th>
-                <td><input type="password" name="upi" value="" id="upi" placeholder="Enter UPI" required></td>
+                <td><input type="password" class="form-control" name="upi" value="" id="upi" placeholder="Enter UPI" pattern="[0-9]{4}" required></td>
             </tr>
             <tr align="center">
                 <th colspan="2"><button type="submit" class="btn btn-success">Pay</button></th>

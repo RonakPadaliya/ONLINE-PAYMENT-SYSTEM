@@ -22,7 +22,6 @@ def acno(request):
         receiver_ac_no=request.POST['receiver_ac_no']
         upi=request.POST['upi']
         username=request.session['user_username']
-        acno=int(acno)
         receiver_ac_no=int(receiver_ac_no)
         upi=str(upi)
         amount=int(amount)
@@ -76,19 +75,18 @@ def mobile_no(request):
         receiver_mobile_no=request.POST['receiver_mobile_no']
         upi=request.POST['upi']
         username=request.session['user_username']
-        acno=int(acno)
-        receiver_ac_no=int(receiver_mobile_no)
+        # receiver_ac_no=int(receiver_mobile_no)
         upi=str(upi)
         amount=int(amount)
         if acno == Bank.objects.filter(username=username).first().acno:
-            if receiver_mobile_no == Bank.objects.filter(acno=receiver_ac_no).first().mobile:
-                if Bank.objects.filter(acno=receiver_ac_no).first().username is not None:
+            if receiver_mobile_no == Bank.objects.filter(mobile=receiver_mobile_no).first().mobile:
+                if Bank.objects.filter(mobile=receiver_mobile_no).first().username is not None:
                     if upi == Users_info.objects.filter(username=username).first().upi:
                         if amount <= Bank.objects.filter(username=username).first().balance-100:
                             current_b = Bank.objects.filter(username=username).first()
                             current_b.balance = current_b.balance - amount
                             request.session['bank_balance']=current_b.balance
-                            receiver_b = Bank.objects.filter(acno=receiver_ac_no).first()
+                            receiver_b = Bank.objects.filter(mobile=receiver_mobile_no).first()
                             receiver_b.balance = receiver_b.balance + amount
                             current_b.save()
                             receiver_b.save()
@@ -100,7 +98,7 @@ def mobile_no(request):
                             t.sender_amount = amount
                             t.sender_purpose = purpose
                             t.sender_username=username
-                            t.receiver_name = Bank.objects.filter(acno=receiver_ac_no).first().first_name
+                            t.receiver_name = Bank.objects.filter(mobile=receiver_mobile_no).first().first_name
                             t.receiver_mobile = receiver_mobile_no
                             t.receiver_acno = Bank.objects.filter(mobile=receiver_mobile_no).first().acno
                             t.payment_type = "mobileno"

@@ -11,7 +11,6 @@ def upi_form(request):
         password = request.POST['password']
         upi=request.POST['upi']
         user_check = request.session['user_username']
-        acno=int(acno)
         if username == user_check:
             if password == Users_info.objects.filter(username=user_check).first().password:
                 if mobile == Bank.objects.filter(username=user_check).first().mobile:
