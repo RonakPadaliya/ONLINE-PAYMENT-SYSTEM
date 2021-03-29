@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import Users_info
-
+from addbankaccount.models import Bank
 
 def login(request):
     if request.session.get('user_username') == None:
@@ -37,7 +37,7 @@ def registration(request):
                     u = Users_info(username=username, password=password, email=email, first_name=first_name,last_name=last_name, mobile=mobile)
                     u.save()
                     messages.success(request,"Successfully Created account")
-                    return render(request,'Login/login.html')
+                    return redirect('/Login')
             # if passwords are not match then again render register pagr
             else:
                 messages.error(request, "password does not match")
@@ -66,6 +66,11 @@ def welcome(request):
                 request.session['user_upi_staus'] = u.upi_staus
                 request.session['user_email'] = u.email
                 p=u.status
+                if u.status is not None:
+                    b=Bank.objects.filter(username=username).first()
+                    request.session['bank_block']=b.block
+                else:
+                    request.session['bank_block']=None
                 return render(request, 'Login/welcome.html', {"username": username,'status':p})
             else:
                 messages.error(request,"Invalid username or password")
@@ -77,6 +82,8 @@ def welcome(request):
         
 def logout(request):
     if 'user_username' in request.session:
+        #check=request.session['user_username']
+        #u=Users_info.objects.filter(username=check).first()
         del request.session['user_username']
         del request.session['user_password']
         del request.session['user_mobile']
@@ -107,3 +114,6 @@ def forgot(request):
             return render(request,'Login/login.html')
     else:
         return render(request, 'Login/forgot.html')
+
+def guidelines(request):
+    return render(request,'Login/guidelines.html')

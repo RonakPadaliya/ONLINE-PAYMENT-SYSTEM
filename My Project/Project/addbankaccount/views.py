@@ -25,7 +25,7 @@ def bank_form(request):
                         request.session['user_status']=1
                         request.session['bank_status']=1
                         request.session['bank_balance']=b.balance
-                        request.session['bank_block']=b.block
+                        #request.session['bank_block']=b.block
                         messages.success(request,"Sucessfully connected")
                         return redirect('http://127.0.0.1:8000/upi')
                     else:

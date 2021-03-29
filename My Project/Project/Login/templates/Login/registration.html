@@ -20,6 +20,9 @@
         </div>
 
         <table>
+            <tr align="center">
+                <th colspan="2">Please, follow below <a href="{% url 'Login:guidelines'%}">Guidelines</a> for register!</th>
+            </tr>
             <tr>
                 <th>Enter First Name:</th>
                 <td><input type="text" class="form-control" name="firstname" value="" id="firstname" pattern="[A-Za-z]{1,}" placeholder="Enter first name" required></td>
@@ -50,6 +53,9 @@
             </tr>
             <tr align="center">
                 <th colspan="2"><button type="submit" class="btn btn-success">Register</button></th>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><a href="{% url 'Login:login'%}">Back to Login</a></th>
             </tr>
         </table>
     </form>
