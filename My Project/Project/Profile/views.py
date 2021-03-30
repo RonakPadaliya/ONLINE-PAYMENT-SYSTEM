@@ -42,6 +42,7 @@ def deleteAccount(request):
                         b=Bank.objects.filter(acno=ac).first()
                         b.username=None
                         b.status=None
+                        b.block=None
                         b.save()
 
                     #if u.status is not None:
