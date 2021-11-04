@@ -1,0 +1,21 @@
+{% extends 'Login/welcome.html'%}
+{% block content %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+<h1 class="display-4">Make Payment</h1>
+<p class="lead font-italic">You have to do add your bank account to do your payment..</p>
+<hr class="my-4">
+<center>
+    <div class="jumbotron">
+        <h3 class="display-4">Select Payment Method</h3>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <br><button type="submit" class="btn btn-light"><a href="make_payment/mobile_no">1.Mobile number</a></button>
+        <br><br><br><button type="submit" class="btn btn-light"><a href="{% url 'make_payment:acno' %}">2.Using Account
+                Number</a></button>
+    </form>
+</center>
+</div></div></div>
+{% endblock %}

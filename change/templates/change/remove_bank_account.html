@@ -1,0 +1,41 @@
+{% extends 'Login/welcome.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+<h1 class="display-4">Remove bank account</h1>
+<p class="lead font-italic">You are removing your bank account......</p>
+<hr class="my-4">
+<center>
+    <div class="jumbotron">
+        <h3 class="display-4">Remove Bank Account</h3>
+    </div>
+    <style>
+        table,th,td {
+            padding: 15px;
+        }
+    </style>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Mobile No :</th>
+                <td><input type="number" class="form-control" name="mobile" value="" id="mobile" pattern="[0-9]{10}" required></td>
+            </tr>
+            <tr>
+                <th>Account No :</th>
+                <td><input type="number" class="form-control" name="acno" value="" id="acno" pattern="[0-9]{14}" required></td>
+            </tr>
+            <tr>
+                <th>Password :</th>
+                <td><input type="password" class="form-control" name="password" value="" id="password" minlength="8" maxlength="16" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Remove</button></th>
+            </tr>
+        </table>
+    </form>
+</center>
+</div></div></div>
+{% endblock %}
