@@ -25,7 +25,7 @@ SECRET_KEY = 'lt_otf-$)%c23a26z)vo_ug*7ulhs233_!=5*sqy&q93ufo9e('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','make-payment.herokuapp.com']
 
 
 # Application definition
