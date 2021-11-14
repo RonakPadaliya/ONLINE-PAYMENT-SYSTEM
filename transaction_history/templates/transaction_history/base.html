@@ -1,0 +1,40 @@
+{% extends 'Login/welcome.html' %}
+{% block content %}
+        <div class="container my-4" style="margin: 50px;">
+            <h1>Transaction History</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Transaction_id</th>
+                <th scope="col">Date</th>
+                <th scope="col">sender_name</th>
+                <th scope="col">sender_acno</th>
+                <th scope="col">sender_mobile</th>
+                <th scope="col">sender_amount</th>
+                <th scope="col">sender_Purpose</th>
+                <th scope="col">payment_type</th>
+                <th scope="col">receiver_name</th>
+                <th scope="col">receiver_acno</th>
+                <th scope="col">receiver_mobile</th>   
+              </tr>
+            </thead>
+            <tbody>
+                {% for data in history%}
+                <tr align="center">
+                    <td>{{data.Transaction_id}}</td>
+                    <td>{{data.date}}</td>
+                    <td>{{data.sender_name}}</td>
+                    <td>{{data.sender_acno}}</td>
+                    <td>{{data.sender_mobile}}</td>
+                    <td>{{data.sender_amount}} ₹</td>
+                    <td>{{data.sender_purpose}}</td>
+                    <td>{{data.payment_type}}</td>
+                    <td>{{data.receiver_name}}</td>
+                    <td>{{data.receiver_acno}}</td>
+                    <td>{{data.receiver_mobile}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+{% endblock %}

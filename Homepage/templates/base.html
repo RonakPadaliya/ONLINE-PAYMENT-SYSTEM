@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online Payment System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+{% load static %}
+<body id="bg"  style="background-image: url('{% static "Homepage/2.jpg"%}')";>
+    <div class="container">
+        <div class="col-md-10.offset-md-1 mt-5">
+            <div class="jumbotron">
+            <h1 class="display-4">Online Payment System</h1>
+                <p class="lead font-italic" >You can do your payment using this System..</p>
+            <hr class="my-4">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

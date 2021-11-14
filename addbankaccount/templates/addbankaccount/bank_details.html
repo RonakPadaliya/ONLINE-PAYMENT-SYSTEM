@@ -1,0 +1,57 @@
+{% extends 'Login/welcome.html' %}
+{% block content %}
+{% if request.session.user_status is None %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+<h1 class="display-4">Add bank account</h1>
+                <p class="lead font-italic" >You have to do add your bank account to do your payment..</p>
+            <hr class="my-4">
+    <center>
+        <div class="jumbotron" >
+            <h3 class="display-4">Add Bank Account</h3>
+        </div>
+        <style>
+            table,
+            th,
+            td {
+                padding: 15px;
+            }
+        </style>
+        <form method = "post" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>Mobile No :</th>
+                    <td><input type="number" class="form-control" name = "mobile" value = "" id="mobile" pattern="[0-9]{10}" placeholder="Digit must be 10" required></td>
+                </tr>
+                <tr>
+                    <th>Account No :</th>
+                    <td><input type="number" class="form-control" name="acno" value="" id="acno" pattern="[0-9]{14}" placeholder="Digit must be 14" required></td>
+                </tr>
+                <tr align="center">
+                    <th colspan="2"><button type="submit" class="btn btn-success">Add</button></th>
+                </tr>
+            </table>
+           <h3> For change<a href="{% url 'change:change_mobile'%}"> Mobile no</a></h3>
+        </form>
+    </center>
+    </div></div></div>
+{% else %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+        <center>
+            <div class="jumbotron" >
+                <h3 class="display-4"></h3>
+
+                <h1 class="display-4" style="color: red;">Alert:</style></h1>
+                <hr class="my-4">
+                <h2>You have already added bank account.</h2><br>
+            </div>
+        </center>
+        </div>
+        </div>
+        </div>
+{% endif %}
+{% endblock %}

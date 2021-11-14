@@ -1,0 +1,36 @@
+{% extends 'Login/base.html' %}
+{% block content %}
+<center>
+    <div class="jumbotron">
+        <h3 class="display-4">Forgot Password</h3>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <style>
+            table,th,td{
+                padding: 15px;
+            }
+        </style>
+
+        <table>
+            <tr>
+                <th>Username :</th>
+                <td><input type="text" name="username" value="" id="username" placeholder="Enter username" required></td>
+            </tr>
+            <tr>
+                <th>Mobile No:</th>
+                <td><input type="tel" name="mobile" value="" id="old" placeholder="Enter Mobile No" required></td>
+            </tr>
+            <tr>
+                <th>New Password :</th>
+                <td><input type="password" name="new" value="" id="new" placeholder="Enter New Password" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Submit</button></th>
+            </tr>
+        </table>
+        <a href="{% url 'Login:login'%}">Go to Login</a>
+    </form>
+
+</center>
+{% endblock %}
