@@ -1,1 +1,1 @@
-web: gunicorn Project.wsgi --log-file -
+web: gunicorn django-online-payment.wsgi --log-file -
