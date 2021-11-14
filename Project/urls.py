@@ -20,10 +20,10 @@ from django.views.static import serve
 from django.conf import settings
 
 urlpatterns = [
-    path(r'admin/', admin.site.urls),
+    path(r'admin', admin.site.urls),
     url(r'^', include("Homepage.urls")),
     url(r'^Login', include("Login.urls")),
-    url(r'^addbankaccount/',include("addbankaccount.urls")),
+    url(r'^addbankaccount',include("addbankaccount.urls")),
     url(r'^upi', include("upi.urls")),
     url(r'^change',include("change.urls")),
     url(r'^make_payment',include("make_payment.urls")),
