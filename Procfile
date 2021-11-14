@@ -1,1 +1,1 @@
-web: gunicorn django-online-payment.wsgi --log-file -
+web: gunicorn django-online-payment:wsgi --log-file - --log-level debug
