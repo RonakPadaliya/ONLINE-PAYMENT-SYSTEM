@@ -30,6 +30,6 @@ urlpatterns = [
     url(r'^transaction_history',include("transaction_history.urls")),
     url(r'^Profile',include("Profile.urls")),
 
-    #url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
