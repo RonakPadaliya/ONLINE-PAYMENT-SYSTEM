@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    url(r'^$', include("Homepage.urls")),
+    url(r'^', include("Homepage.urls")),
     url(r'^Login', include("Login.urls")),
     url(r'^addbankaccount/',include("addbankaccount.urls")),
     url(r'^upi', include("upi.urls")),
@@ -28,6 +30,6 @@ urlpatterns = [
     url(r'^transaction_history',include("transaction_history.urls")),
     url(r'^Profile',include("Profile.urls")),
 
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    #url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
