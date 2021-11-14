@@ -1,0 +1,92 @@
+{% extends 'Login/welcome.html' %}
+{% block content %}
+{%if request.session.user_status is None %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+            <center>
+                <h1 class="display-4" style="color: red;">Alert:</style>
+                </h1>
+                <hr class="my-4">
+                <div class="jumbotron">
+                    <h3 class="display-4"></h3>
+                </div>
+                <h2>You have not added bank account So you cannot able to create UPI PIN.</h2><br>
+                <h3><button type="submit" class="btn btn-light"><a href="{% url 'Login:welcome'%}">Homepage</a></button>
+                </h3>
+            </center>
+        </div>
+    </div>
+</div>
+{% elif request.session.user_upi_staus is None %}
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">UPI Form</h1>
+            <p class="lead font-italic">You have to craete UPI for secure Payment......</p>
+            <hr class="my-4">
+            <center>
+                <div class="jumbotron">
+                    <h3 class="display-4">UPI<h3>
+                </div>
+                <style>
+                    table,
+                    th,
+                    td {
+                        padding: 15px;
+                    }
+                </style>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <th>Enter mobile number :</th>
+                            <td><input type="number" class="form-control" name="mobile" value="" id="mobile"
+                                    pattern="[0-9]{10}" placeholder="Digit must be 10" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter account number :</th>
+                            <td><input type="number" class="form-control" name="acno" value="" id="acno"
+                                    pattern="[0-9]{14}" placeholder="Digit must be 14" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter username :</th>
+                            <td><input type="text" class="form-control" name="username" value="" id="username"
+                                    minlength="6" placeholder="Minimum length is 6" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter Password :</th>
+                            <td><input type="password" class="form-control" name="password" value="" id="password"
+                                    minlength="8" placeholder="Digit must be 8" required></td>
+                        </tr>
+                        <tr>
+                            <th>Enter UPI PIN :</th>
+                            <td><input type="password" class="form-control" name="upi" value="" id="upi"
+                                    pattern="[0-9]{4}" placeholder="UPI PIN Size is 4 in digit" required>
+                                <div></div>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <th colspan="2"><button type="submit" class="btn btn-success">Create</button></th>
+                        </tr>
+                    </table>
+                </form>
+            </center>
+        </div>
+    </div>
+</div>
+{% else %}
+<center>
+    <div class="container">
+        <div class="col-md-10.offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4" style="color: red;">Alert:</style>
+                </h1>
+                <hr class="my-4">
+                <h2>You are already created UPI PIN.</h2><br>
+            </div>
+        </div>
+    </div>
+</center>
+{% endif %}
+{% endblock %}

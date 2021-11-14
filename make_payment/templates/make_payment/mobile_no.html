@@ -1,0 +1,50 @@
+{% extends 'login/welcome.html' %}
+{% block content %}
+<style>
+    table,th,td{
+        padding: 15px;
+    }
+</style>
+<div class="container">
+    <div class="col-md-10.offset-md-1 mt-5">
+        <div class="jumbotron">
+<h1 class="display-4">Payment using Mobile No</h1>
+<p class="lead font-italic">You are do your payment using Mobile No...</p>
+<hr class="my-4">
+<center>
+    <form method="POST" class="form-group" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="jumbotron">
+            <h3 class="display-4">Payment</h3>
+        </div>
+
+        <table>
+            <tr>
+                <th>Enter Your Account No :</th>
+                <td><input type="text" class="form-control" name="acno" value="" id="acno" placeholder="Enter Your acno" pattern="[0-9]{14}" required></td>
+            </tr>
+            <tr>
+                <th>Enter amount :</th>
+                <td><input type="number" class="form-control" name="amount" value="" id="amount" placeholder="Enter Amount" min=1 required></td>
+            </tr>
+            <tr>
+                <th>Enter purpose :</th>
+                <td><input type="text" class="form-control" name="purpose" value="" id="purpose" placeholder="Enter Your purpose" required></td>
+            </tr>
+            <tr>
+                <th>Enter receiver Mobile No:</th>
+                <td><input type="text" class="form-control" name="receiver_mobile_no" value="" id="receiver_mobile_no" pattern="[0-9]{10}" placeholder="Enter receiver Mobile NO" required></td>
+            </tr>
+            <tr>
+                <th>Enter UPI PIN :</th>
+                <td><input type="password" class="form-control" name="upi" value="" id="upi" placeholder="Enter UPI" pattern="[0-9]{4}" required></td>
+            </tr>
+            <tr align="center">
+                <th colspan="2"><button type="submit" class="btn btn-success">Pay</button></th>
+            </tr>
+        </table>
+    </form>
+</center>
+</div></div></div>
+{% endblock %}
